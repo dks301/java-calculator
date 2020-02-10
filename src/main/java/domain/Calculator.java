@@ -7,18 +7,19 @@ import java.util.function.BiFunction;
 
 public class Calculator {
 	private static final int FIRST_NUMBER = 0;
+	private static final Map<String, BiFunction<Double, Double, Double>> functions = new HashMap<>();
 
-	private List<String> expression;
-	private Map<String, BiFunction<Double, Double, Double>> functions;
-
-	public Calculator(List<String> expression) {
-		this.expression = expression;
-		functions = new HashMap<>();
-
+	static {
 		functions.put("+", (aDouble, aDouble2) -> aDouble + aDouble2);
 		functions.put("-", (aDouble, aDouble2) -> aDouble - aDouble2);
 		functions.put("*", (aDouble, aDouble2) -> aDouble * aDouble2);
-		functions.put("/", ((aDouble, aDouble2) -> aDouble / aDouble2));
+		functions.put("/", (aDouble, aDouble2) -> aDouble / aDouble2);
+	}
+
+	private List<String> expression;
+
+	public Calculator(List<String> expression) {
+		this.expression = expression;
 	}
 
 	public double calculate() {
