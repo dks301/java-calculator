@@ -38,12 +38,12 @@ public class Calculator {
 		double result = Double.parseDouble(this.numbers.remove(FIRST_NUMBER));
 
 		for (int i = 0; i < operators.size(); i++) {
-			result = patternMatching(result, i);
+			result = calculateByFunctions(result, i);
 		}
 		return result;
 	}
 
-	public double patternMatching(double result, int index) {
+	public double calculateByFunctions(double result, int index) {
 		return functions.get(operators.get(index)).apply(result, Double.parseDouble(numbers.get(index)));
 	}
 }
